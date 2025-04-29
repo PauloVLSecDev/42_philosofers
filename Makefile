@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/26 15:59:59 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/04/26 17:01:57 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/04/29 18:22:55 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 DIR = src
-FILES = $(DIR)/main.c
+FILES = $(DIR)/main.c \
+	$(DIR)/utils.c
 
 OBS = $(FILES:.c=.o)
 
