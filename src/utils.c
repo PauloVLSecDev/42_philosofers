@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/04/29 18:07:01 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:47:13 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 int	check_arguments(int argc, char **argv)
 {
 	int	i;
-	int flag;
+	int	flag;
 
 	i = 1;
 	flag = 0;
-	if (argc < 5 || argc > 6)				
+	if (argc < 5 || argc > 6)
 		flag = 1;
 	while (argv[i] != NULL && flag != 1)
 	{
 		flag = is_valid(argv[i]);
 		i++;
 	}
-	return(flag);
+	return (flag);
 }
-
 
 int	is_valid(char *argv)
 {
@@ -48,14 +47,15 @@ int	is_valid(char *argv)
 	return (0);
 }
 
-/*
+
 int	ft_atoi(char *str)
 {
-	int result;
-	int sign;
+	int	result;
+	int	sign;
+	int i;
 
+	i = 0;
 	sign = 1;
-
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if(str[i] == '-')
@@ -70,4 +70,4 @@ int	ft_atoi(char *str)
 	}
 	return (result * sign);
 }
-*/
+
