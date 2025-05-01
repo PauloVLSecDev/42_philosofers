@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/26 15:59:59 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/04/29 19:50:53 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/05/01 17:01:41 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -pthread -g3
 DIR = src
 FILES = $(DIR)/main.c \
-	$(DIR)/utils.c
+	$(DIR)/utils.c \
+	$(DIR)/init.c
 
 OBS = $(FILES:.c=.o)
 

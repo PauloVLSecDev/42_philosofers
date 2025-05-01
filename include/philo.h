@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/04/30 20:55:35 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/01 19:18:33 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct s_philo
 	int				is_eating;
 	int				num_philo;
 	int				last_eat;
-	pthread			thread_id;
-	pthread_mutex_t	fork_r;
+	int				n_satisfied;
+	pthread_t			thread_id;
+	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	*fork_l;
-	struct t_info		*info	
+	struct t_info		*info;
 }					t_philo;
 
 typedef struct s_info
@@ -36,10 +37,10 @@ typedef struct s_info
 	int				num_philo;
 	int				time_to_spleep;
 	int				time_to_eat;
-	int				n_stisfied;
+	int				n_satisfied;
 	int				time_start;
+	int				stop;
 	t_philo			*philo;
-
 	pthread_mutex_t	m_stop;
 	pthread_mutex_t	m_eat;
 	pthread_mutex_t	dead;
@@ -50,6 +51,6 @@ int					main(int argc, char **argv);
 int					check_arguments(int argc, char **argv);
 int					is_valid(char *argv);
 int					ft_atoi(char *str);
-void				*teste_thread(void *thread_id);
-int				init_struct(t_info *program, char **argv)
+//void				*teste_thread(void *thread_id);
+int				init_struct(t_info *program, char **argv);
 #endif
