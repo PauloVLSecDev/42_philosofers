@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/04/29 20:47:13 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:43:21 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,27 @@ int	is_valid(char *argv)
 	return (0);
 }
 
-
 int	ft_atoi(char *str)
 {
 	int	result;
 	int	sign;
-	int i;
+	int	i;
 
 	i = 0;
 	sign = 1;
+	result = 0;
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
-	if(str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= 9)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + str[i] - '-';
+		result = (result * 10) + str[i] - '0';
 		i++;
 	}
 	return (result * sign);
 }
-
