@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/01 19:18:33 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:12:17 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int					main(int argc, char **argv);
 int					check_arguments(int argc, char **argv);
 int					is_valid(char *argv);
 int					ft_atoi(char *str);
-//void				*teste_thread(void *thread_id);
 int				init_struct(t_info *program, char **argv);
+int				init_philos(t_info *program);
 #endif
+int	init_philos(t_info *program);

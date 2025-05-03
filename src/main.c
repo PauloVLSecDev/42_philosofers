@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:25:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/01 17:12:01 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:29:32 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	init_struct(&program, argv);
+	init_philos(&program);
 	printf("VALID\n");
 	return (0);
 }
