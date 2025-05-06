@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:25:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/02 17:29:32 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:57:01 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 int	main(int argc, char **argv)
 {
 	t_info	program;
-	int			i;
+	int		i;
+
 	i = 0;
 	if (check_arguments(argc, argv))
 	{
 		printf("invalid argument\n");
 		return (0);
 	}
-	init_struct(&program, argv);
-	init_philos(&program);
+	if (init_all(argv, &program))
+		printf("error");
 	printf("VALID\n");
 	return (0);
 }
@@ -39,5 +40,3 @@ void	*teste_thread(void *thread_id)
 	pthread_exit(NULL);
 }
 */
-
-
