@@ -4,9 +4,8 @@
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/05 21:00:02 by pvitor-l         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
+/*   Updated: 2025/05/06 18:38:58 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -18,17 +17,19 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+typedef struct s_info	t_info;
+
 typedef struct s_philo
 {
 	int				n;
 	int				is_eating;
 	int				num_philo;
-	int				last_eat;
+	long				last_eat;
 	int				n_satisfied;
-	pthread_t		thread_id;
+	pthread_t		id;
 	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	*fork_l;
-	struct t_info	*info;
+	t_info	*info;
 }					t_philo;
 
 typedef struct s_info
@@ -38,7 +39,7 @@ typedef struct s_info
 	int				time_to_spleep;
 	int				time_to_eat;
 	int				n_satisfied;
-	int				time_start;
+	long				start_time;
 	int				stop;
 	t_philo			*philo;
 	pthread_mutex_t	*forks;
@@ -56,5 +57,8 @@ int					init_struct(t_info *program, char **av);
 int					init_philos(t_info *program);
 int					init_fork(t_info *program);
 int					init_all(char **av, t_info *program);
-size_t					get_current_time(void);
+long					get_current_time(t_info *data);
+long					get_absolute_time(void);
+void				routine_teste(void *philo);
+void				create_philos_threads(t_info *data);
 #endif

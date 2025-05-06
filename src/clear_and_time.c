@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clear_and_time.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 16:25:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 16:31:55 by pvitor-l         ###   ########.fr       */
+/*   Created: 2025/05/06 18:22:51 by pvitor-l          #+#    #+#             */
+/*   Updated: 2025/05/06 18:48:32 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	main(int argc, char **argv)
+long	get_absolute_time(void)
 {
-	t_info	program;
-	int		i;
+	struct timeval	tv;
 
-	i = 0;
-	if (check_arguments(argc, argv))
-	{
-		printf("invalid argument\n");
-		return (0);
-	}
-	if (init_all(argv, &program))
-		printf("error");
-	create_philos_threads(&program);
-	printf("VALID\n");
-	return (0);
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-/*
-void	*teste_thread(void *thread_id)
+long	get_current_time(t_info *data)
 {
-	int	id;
+	struct timeval tv;
 
-	usleep(10000);
-	id = (int)(intptr_t)thread_id;
-	printf("eu sou um thread %d\n", id);
-	pthread_exit(NULL);
+	gettimeofday(&tv, NULL);
+	
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000) - data->start_time);
 }
-*/

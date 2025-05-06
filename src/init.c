@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:27:13 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/05 20:57:57 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:37:57 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,16 @@ int	init_philos(t_info *program)
 	program->philo = malloc(sizeof(t_philo) * program->num_philo);
 	if (!program->philo)
 		return (1);
-	program->time_start = get_current_time();
+	program->start_time = get_absolute_time();
 	while (i < program->num_philo)
 	{
-		program->philo[i].thread_id = i + 1;
-		program->philo[i].last_eat = program->time_start;
+		program->philo[i].id = i + 1;
+		program->philo[i].last_eat = program->start_time;
 		program->philo[i].n_satisfied = 0;
 		program->philo[i].fork_r = &program->forks[i];
 		program->philo[i].fork_l = &program->forks[(i + 1)
 			% program->num_philo];
+		program->philo[i].info = program;
 		i++;
 	}
 	return (0);

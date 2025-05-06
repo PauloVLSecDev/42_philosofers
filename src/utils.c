@@ -6,19 +6,11 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/05 20:47:04 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:43:57 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-size_t	get_current_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-}
 
 int	check_arguments(int argc, char **argv)
 {
