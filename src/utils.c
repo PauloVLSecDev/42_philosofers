@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 18:43:57 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:30:34 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	check_arguments(int argc, char **argv)
 		flag = 1;
 	while (argv[i] != NULL && flag != 1)
 	{
+		if (ft_atoi(argv[i]) == 0)
+			return (1);
 		flag = is_valid(argv[i]);
 		i++;
 	}

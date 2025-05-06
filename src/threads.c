@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 16:07:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 19:21:35 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/06 19:29:25 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,24 @@ void	create_philos_threads(t_info *data)
 
 void	routine_teste(void *data)
 {
-	long	time;
+	long		time;
 	int		i;
-	t_philo	*philo;
-	t_info	*count;
+	t_philo		*philo;
+	t_info		*count;
 
 	philo = (t_philo *)data;
 	count = philo->info;
 	time = get_current_time(count);
 	i = 0;
+	if (count->num_philo == 1)
+	{
+		printf("numbre of philosofer invalid");
+		return ;
+	}
+		
 	while (i < count->num_philo)
 	{
-		usleep(1000);
+		usleep(100);
 		printf("%ld o id desta thread e este %i\n", time, i);
 		i++;
 	}
