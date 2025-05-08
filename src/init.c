@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:27:13 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 18:37:57 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:24:01 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	init_all(char **av, t_info *program)
 {
 	if (init_struct(program, av))
 		return (1);
-	if (init_philos(program))
-		return (1);
 	if (init_fork(program))
+		return (1);
+	if (init_philos(program))
 		return (1);
 	return (0);
 }
