@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/26 15:59:59 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/05/06 18:41:24 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/05/12 19:07:47 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FILES = $(DIR)/main.c \
 	$(DIR)/utils.c \
 	$(DIR)/init.c \
 	$(DIR)/threads.c \
+	$(DIR)/actions.c \
 	$(DIR)/clear_and_time.c
 
 OBS = $(FILES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 16:07:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/07 20:32:04 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:20:12 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	create_philos_threads(t_info *data)
 	i = 0;
 	while (i < data->num_philo)
 	{
-		pthread_create(&data->philo[i].id, NULL, (void *)routine_teste,
+		pthread_create(&data->philo[i].thread_id, NULL, (void *)routine_teste,
 			&data->philo[i]);
-		pthread_join(data->philo->id, NULL);
 		i++;
 	}
+	i = 0;
+	while (i < data->num_philo)
+		pthread_join(data->philo[i++].thread_id, NULL);
 	return ;
 }
 
@@ -35,19 +37,18 @@ void	routine_teste(void *data)
 	t_info		*count;
 
 	philo = (t_philo *)data;
-	count = philo->info;
-	time = get_current_time(count);
+	count = philo->table;
+	time = get_time(count);
 	i = 0;
-	if (count->num_philo == 1)
+	while (run_simulation(count))
 	{
-		print(philo, "numbre of philosofer invalid");
-		return ;
-	}
-		
-	while (i < count->num_philo)
-	{
-		usleep(100);
-		print(philo, "thread esta foi criada");
+		if (take_fork(philo))
+		{
+			eating(philo);
+			drop_fork(philo);
+			sleeping(philo);
+			thinking(philo);
+		}
 		i++;
 	}
 	return ;

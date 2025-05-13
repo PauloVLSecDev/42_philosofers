@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 20:30:34 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:33:13 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ int	check_arguments(int argc, char **argv)
 int	is_valid(char *argv)
 {
 	int	k;
-	int	len;
 
 	k = 0;
-	len = 0;
 	if (!argv || !*argv)
 		return (1);
 	while (argv[k])

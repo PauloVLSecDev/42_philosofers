@@ -32,4 +32,3 @@ int	main(int argc, char **argv)
 	printf("VALID\n");
 	return (0);
 }
-
