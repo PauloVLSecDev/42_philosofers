@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:37:14 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/12 21:06:29 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/13 21:18:25 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	take_fork(t_philo *philo)
 {
+	if (!run_simulation(philo->table))
+		return (0);
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->fork_r);
@@ -44,7 +46,6 @@ void	drop_fork(t_philo *philo)
 		pthread_mutex_unlock(philo->fork_l);
 		pthread_mutex_unlock(philo->fork_r);
 	}
-	//	print(philo, "is thinking");
 	return ;
 }
 
@@ -81,8 +82,7 @@ void	eating(t_philo *philo)
 	s_time = get_time(table);
 	while (run_simulation(table) && get_time(table)
 		- s_time < table->time_to_eat)
-		usleep(50);
-	drop_fork(philo);
+	usleep(50);
 }
 
 void	sleeping(t_philo *philo)
@@ -95,7 +95,8 @@ void	sleeping(t_philo *philo)
 		return ;
 	print(philo, "is sleeping");
 	s_time = get_time(table);
-	while (run_simulation(table) && get_time(table) - s_time < table->time_to_sleep)
+	while (run_simulation(table) && get_time(table)
+		- s_time < table->time_to_sleep)
 		usleep(50);
 	return ;
 }
@@ -110,7 +111,8 @@ void	thinking(t_philo *philo)
 		return ;
 	print(philo, "is thinking");
 	s_time = get_time(table);
-	while (run_simulation(table) && get_time(table) - s_time < table->time_to_sleep)
+	while (run_simulation(table) && get_time(table)
+		- s_time < table->time_to_sleep)
 		usleep(50);
 }
 

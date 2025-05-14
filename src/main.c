@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:25:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/06 20:33:27 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/13 20:54:27 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_info	program;
+	t_info	table;
 	int		i;
 
 	i = 0;
@@ -23,12 +23,12 @@ int	main(int argc, char **argv)
 		printf("invalid argument\n");
 		return (0);
 	}
-	if (init_all(argv, &program))
+	if (init_all(argv, &table))
 	{
 		printf("error\n");
 		return (0);
 	}
-	create_philos_threads(&program);
-	printf("VALID\n");
+	create_philos_threads(&table);
+	//	free_all(&table);
 	return (0);
 }

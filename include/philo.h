@@ -4,8 +4,9 @@
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/12 19:26:16 by pvitor-l         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
+/*   Updated: 2025/05/13 20:26:54 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -30,7 +31,7 @@ typedef struct s_philo
 	int					n_satisfied;
 	bool				is_full;
 	int					id;
-	pthread_t		thread_id;
+	pthread_t			thread_id;
 	pthread_mutex_t		*fork_r;
 	pthread_mutex_t		*fork_l;
 	t_info				*table;
@@ -45,6 +46,7 @@ typedef struct s_info
 	int					n_satisfied;
 	long				start_time;
 	bool				stop;
+	pthread_t			monitor_id;
 	t_philo				*philo;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		m_stop;
@@ -66,7 +68,7 @@ long					get_time(t_info *data);
 long					get_absolute_time(void);
 void					routine_teste(void *philo);
 void					create_philos_threads(t_info *data);
-int					take_fork(t_philo *philo);
+int						take_fork(t_philo *philo);
 void					drop_fork(t_philo *philo);
 void					print(t_philo *philo, char *str);
 void					eating(t_philo *philo);
@@ -74,4 +76,7 @@ void					sleeping(t_philo *philo);
 void					thinking(t_philo *philo);
 bool					is_dead(t_philo *philo);
 bool					run_simulation(t_info *table);
+void					*monitor_philo(void *data);
+void					*full_philo(t_info *table);
+void					free_all(t_info *table);
 #endif
