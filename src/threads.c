@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 16:07:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/14 16:48:45 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:08:12 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,15 @@ void	routine(void *data)
 
 	philo = (t_philo *)data;
 	if (philo->table->num_philo == 1)
+	{
+		pthread_mutex_lock(philo->fork_l);
+		print(philo, "has taken a fork");
+		usleep(philo->table->time_to_die * 1000);
+		pthread_mutex_unlock(philo->fork_l);
 		return ;
+	}
 	if (philo->id % 2 != 0)
-		usleep(1000);
+		usleep(1);
 	while (run_simulation(philo->table))
 	{
 		if (take_fork(philo))

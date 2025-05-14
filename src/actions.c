@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:37:14 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/14 16:47:00 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:11:32 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,11 @@ void	sleeping(t_philo *philo)
 
 void	thinking(t_philo *philo)
 {
-	long	s_time;
 	t_info	*table;
 
 	table = philo->table;
 	if (!run_simulation(table))
 		return ;
 	print(philo, "is thinking");
-	s_time = get_time(table);
-	while (run_simulation(table) && get_time(table)
-		- s_time < table->time_to_sleep)
-		usleep(50);
+	usleep(50);
 }
