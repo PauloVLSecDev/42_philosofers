@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:37:14 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/14 19:11:32 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:05:41 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	take_fork(t_philo *philo)
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->fork_r);
+		print(philo, "has taken a fork");
 		pthread_mutex_lock(philo->fork_l);
 		print(philo, "has taken a fork");
 		return (1);
@@ -26,6 +27,7 @@ int	take_fork(t_philo *philo)
 	else
 	{
 		pthread_mutex_lock(philo->fork_l);
+		print(philo, "has taken a fork");
 		pthread_mutex_lock(philo->fork_r);
 		print(philo, "has taken a fork");
 		return (1);
