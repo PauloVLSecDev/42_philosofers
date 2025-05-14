@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:22:51 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/13 20:54:27 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:24:44 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ void	free_all(t_info *table)
 	int	i;
 
 	i = 0;
-	/*
 	pthread_mutex_destroy(&table->m_stop);
 	pthread_mutex_destroy(&table->m_print);
 	pthread_mutex_destroy(&table->m_eat);
 	pthread_mutex_destroy(&table->dead);
-	*/
 	if (!table)
 		return ;
 	if (table->forks)

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:27:13 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/12 20:28:48 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:36:38 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	init_struct(t_info *table, char **av)
 	table->time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
 		table->n_satisfied = ft_atoi(av[5]);
+	else
+		table->n_satisfied = -1;
 	if (table->num_philo == 0)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:37:14 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/13 21:18:25 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:47:00 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,6 @@ void	drop_fork(t_philo *philo)
 	return ;
 }
 
-void	print(t_philo *philo, char *str)
-{
-	long	ms;
-
-	if (!run_simulation(philo->table))
-		return ;
-	pthread_mutex_lock(&philo->table->m_print);
-	ms = get_time(philo->table);
-	printf("%ld %d %s\n", ms, philo->id, str);
-	pthread_mutex_unlock(&philo->table->m_print);
-	return ;
-}
-
 void	eating(t_philo *philo)
 {
 	long	s_time;
@@ -82,7 +69,7 @@ void	eating(t_philo *philo)
 	s_time = get_time(table);
 	while (run_simulation(table) && get_time(table)
 		- s_time < table->time_to_eat)
-	usleep(50);
+		usleep(50);
 }
 
 void	sleeping(t_philo *philo)
@@ -114,30 +101,4 @@ void	thinking(t_philo *philo)
 	while (run_simulation(table) && get_time(table)
 		- s_time < table->time_to_sleep)
 		usleep(50);
-}
-
-bool	is_dead(t_philo *philo)
-{
-	t_info	*table;
-	long	time_of_life;
-	bool	dead_status;
-
-	dead_status = false;
-	table = philo->table;
-	pthread_mutex_lock(&table->m_eat);
-	time_of_life = get_absolute_time() - philo->last_meal;
-	if (time_of_life >= table->time_to_die)
-		dead_status = true;
-	pthread_mutex_unlock(&table->m_eat);
-	return (dead_status);
-}
-
-bool	run_simulation(t_info *table)
-{
-	bool	run;
-
-	pthread_mutex_lock(&table->m_stop);
-	run = !table->stop;
-	pthread_mutex_unlock(&table->m_stop);
-	return (run);
 }

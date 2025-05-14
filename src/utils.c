@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 13:43:11 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/12 18:33:13 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:46:33 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,33 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+void	print(t_philo *philo, char *str)
+{
+	long	ms;
+
+	if (!run_simulation(philo->table))
+		return ;
+	pthread_mutex_lock(&philo->table->m_print);
+	ms = get_time(philo->table);
+	printf("%ld %d %s\n", ms, philo->id, str);
+	pthread_mutex_unlock(&philo->table->m_print);
+	return ;
+}
+
+bool	is_dead(t_philo *philo)
+{
+	t_info	*table;
+	long	time_of_life;
+	bool	dead_status;
+
+	dead_status = false;
+	table = philo->table;
+	pthread_mutex_lock(&table->m_eat);
+	time_of_life = get_absolute_time() - philo->last_meal;
+	if (time_of_life >= table->time_to_die)
+		dead_status = true;
+	pthread_mutex_unlock(&table->m_eat);
+	return (dead_status);
 }

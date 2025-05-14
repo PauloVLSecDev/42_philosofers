@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:25:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/13 20:54:27 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:17:21 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	create_philos_threads(&table);
-	//	free_all(&table);
+	free_all(&table);
 	return (0);
 }

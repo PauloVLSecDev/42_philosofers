@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 16:07:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/13 21:21:08 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:48:45 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	create_philos_threads(t_info *data)
 	i = 0;
 	while (i < data->num_philo)
 	{
-		pthread_create(&data->philo[i].thread_id, NULL, (void *)routine_teste,
+		pthread_create(&data->philo[i].thread_id, NULL, (void *)routine,
 			&data->philo[i]);
 		i++;
 	}
@@ -31,11 +31,13 @@ void	create_philos_threads(t_info *data)
 	return ;
 }
 
-void	routine_teste(void *data)
+void	routine(void *data)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)data;
+	if (philo->table->num_philo == 1)
+		return ;
 	if (philo->id % 2 != 0)
 		usleep(1000);
 	while (run_simulation(philo->table))
@@ -103,4 +105,14 @@ void	*full_philo(t_info *table)
 		usleep(1000);
 	}
 	return (NULL);
+}
+
+bool	run_simulation(t_info *table)
+{
+	bool	run;
+
+	pthread_mutex_lock(&table->m_stop);
+	run = !table->stop;
+	pthread_mutex_unlock(&table->m_stop);
+	return (run);
 }

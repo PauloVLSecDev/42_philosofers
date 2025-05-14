@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 16:30:38 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/05/13 20:26:54 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:48:16 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PHILO_H
@@ -66,7 +66,7 @@ int						init_fork(t_info *table);
 int						init_all(char **av, t_info *table);
 long					get_time(t_info *data);
 long					get_absolute_time(void);
-void					routine_teste(void *philo);
+void					routine(void *philo);
 void					create_philos_threads(t_info *data);
 int						take_fork(t_philo *philo);
 void					drop_fork(t_philo *philo);
